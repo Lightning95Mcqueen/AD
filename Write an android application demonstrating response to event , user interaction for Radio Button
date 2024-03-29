@@ -1,0 +1,147 @@
+Add The Following Program To activity_main.xml File:-
+
+
+<?xml version=“1.0” encoding=“utf-8”?>
+<RelativeLayout
+ xmlns:android=“http://schemas.android.com/apk/res/android”
+ xmlns:app=“http://schemas.android.com/apk/res-auto”
+ xmlns:tools=“http://schemas.android.com/tools”
+ android:layout_width=“match_parent”
+ android:layout_height=“match_parent”
+ tools:context=“.MainActivity”>
+
+ <TextView
+    android:layout_width=“wrap_content”
+    android:layout_height=“wrap_content”
+    android:text=“@string/select_your_subject”
+    android:textStyle=“bold”
+    android:layout_marginStart=“10dp”
+    android:textSize=“20sp”/>
+
+ <RadioGroup
+   android:layout_marginTop=“50dp”
+   android:id=“@+id/groupradio
+   android:layout_marginStart=“10dp”
+   android:layout_width=“fill_parent”
+   android:layout_height=“wrap_content”>
+
+<RadioButton
+   android:layout_width=“fill_parent”
+   android:layout_height=“wrap_content”
+   android:id=“@+id/radia_id1”
+   android:text=“@string/dbms”
+   android:textSize=“20sp”/>
+
+<RadioButton
+   android:layout_width=“fill_parent”
+   android:layout_height=“wrap_content”
+   android:id=“@+id/radia_id2”
+   android:text=“@string/c_c_programming”
+   android:textSize=“20sp”/>
+
+ <RadioButton
+   android:layout_width=“fill_parent”
+   android:layout_height=“wrap_content”
+   android:id=“@+id/radia_id3”
+   android:text=“@string/data_structure”
+   android:textSize=“20sp”/>
+
+ <RadioButton
+   android:layout_width=“fill_parent”
+   android:layout_height=“wrap_content”
+   android:id=“@+id/radia_id4”
+   android:text=“@string/algorithms”
+   android:textSize=“20sp”/>
+</RadioGroup>
+
+ <Button
+   android:layout_width=“wrap_content”
+   android:layout_height=“wrap_content”
+   android:text=“@string/submit”
+   android:id=“@+id/submit”
+   android:textStyle=“bold”
+   android:textSize=“20sp”
+   android:layout_marginTop=“200dp”
+   android:layout_marginStart=“180dp”
+   />
+ 
+ <Button
+   android:layout_width=“wrap_content”
+   android:layout_height=“wrap_content”
+   android:text=“@string/clear”
+   android:id=“@+id/clear”
+   android:textSize=“20sp”
+   android:textStyle=“bold”
+   android:layout_marginTop=“200dp”
+   android:layout_marginStart=“20dp”
+   />
+</RelativeLayout>
+
+
+mainactivity.kt file:
+
+
+package com.example.sycspractical2id
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.widget.Button
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.Toast
+
+class MainActivity : AppCompatActivity() {
+ private var radioGroup: RadioGroup? = null
+ private var submit: Button? = null
+ private var clear: Button? = null
+   override fun onCreate(savedInstanceState: Bundle?) {
+   super.onCreate(savedInstanceState)
+   setContentView(R.layout.activity_main)
+   this.submit = findViewById<View>(R.id.submit) as Button
+   this.clear = findViewById<View>(R.id.clear) as Button
+   this.radioGroup = findViewById<View>(R.id.groupradio) as RadioGroup
+  
+    radioGroup!!.clearCheck()
+    radioGroup!!.setOnCheckedChangeListener { group, checkedId ->
+      val radioButton = group
+       .findViewById<View>(checkedId) as RadioButton
+       }
+
+    submit!!.setOnClickListener {
+      val selectedId = radioGroup!!.checkedRadioButtonId
+      if (selectedId == -1) {
+        Toast.makeText(
+         this@MainActivity,
+         “No answer has been selected”,
+         Toast.LENGTH_SHORT
+        )
+        .show()
+      } else {
+         val radioButton = radioGroup!!
+           .findViewById<View>(selectedId) as RadioButton
+         Toast.makeText(
+           this@MainActivity,
+           radioButton.text,
+           Toast.LENGTH_SHORT
+         )
+           .show()
+       }
+     }
+     clear!!.setOnClickListener { 
+       radioGroup!!.clearCheck()
+   }
+ }
+}
+
+Add The Following Program in strings.xml File:-
+
+<resources>
+   <string name=“app_name”>SYCSPractical2id</string>
+   <string name=“select_your_subject”>Select your Subject ?</string>
+   <string name=“dbms”>DBMS</string>
+   <string name=“c_c_programming”>C/C++ Programming</string>
+   <string name=“data_structure”>Data Structure</string>
+   <string name=“algorithms”>Algorithms</string>
+   <string name=“submit”>Submit</string>
+   <string name=“clear”>Clear</string>
+</resources>
