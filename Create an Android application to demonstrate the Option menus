@@ -1,1 +1,77 @@
+Activity main xml file:
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:app="http://schemas.android.com/apk/res-auto"
+ xmlns:tools="http://schemas.android.com/tools"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ tools:context=".MainActivity">
+   <Button
+   android:id="@+id/clickBtn"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:background="#0F9D58"
+   android:text="Click Me"
+   android:textColor="#ffffff"
+   app:layout_constraintBottom_toBottomOf="parent"
+   app:layout_constraintLeft_toLeftOf="parent"
+   app:layout_constraintRight_toRightOf="parent"
+   app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+mainactivity.kt file
+
+
+package com.example.sycspractical8iia
+import android.os.Bundle
+import android.widget.Button
+import android.widget.PopupMenu
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+class MainActivity : AppCompatActivity() {
+ lateinit var button: Button
+   override fun onCreate(savedInstanceState: Bundle?) {
+     super.onCreate(savedInstanceState)
+     setContentView(R.layout.activity_main)
+
+     button = findViewById(R.id.clickBtn)
+ 
+     button.setOnClickListener {
+ 
+       val popupMenu = PopupMenu(this@MainActivity, button)
+       popupMenu.menuInflater.inflate(R.menu.popup_menu, popupMenu.menu)
+       popupMenu.setOnMenuItemClickListener { menuItem ->
+
+         Toast.makeText(this@MainActivity, "You Clicked " + menuItem.title,
+Toast.LENGTH_SHORT).show()
+         true
+     }
+     popupMenu.show()
+   }
+ }
+}
+
+
+Now Crate a New Directory ‘Menu’ And Then Create a File named popup_menu.xml and add
+the code:-
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+ <item
+ android:id="@+id/java"
+ android:title="Java" />
+ <item
+ android:id="@+id/kotlin"
+ android:title="Kotlin" />
+ <item
+ android:id="@+id/android"
+ android:title="Android" />
+ <item
+ android:id="@+id/react_native"
+ android:title="React Native" />
+</menu>
+
 
