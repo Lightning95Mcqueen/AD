@@ -22,6 +22,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
    app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+
 mainactivity.kt file
 
 
@@ -36,15 +38,11 @@ class MainActivity : AppCompatActivity() {
    override fun onCreate(savedInstanceState: Bundle?) {
      super.onCreate(savedInstanceState)
      setContentView(R.layout.activity_main)
-
      button = findViewById(R.id.clickBtn)
- 
      button.setOnClickListener {
- 
        val popupMenu = PopupMenu(this@MainActivity, button)
        popupMenu.menuInflater.inflate(R.menu.popup_menu, popupMenu.menu)
        popupMenu.setOnMenuItemClickListener { menuItem ->
-
          Toast.makeText(this@MainActivity, "You Clicked " + menuItem.title,
 Toast.LENGTH_SHORT).show()
          true
