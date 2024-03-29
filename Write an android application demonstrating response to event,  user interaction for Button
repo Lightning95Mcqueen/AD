@@ -1,0 +1,94 @@
+First add the following program in activity_main.xml file:
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   tools:context=".MainActivity">
+
+ <TextView
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:text="Hello World!"
+   app:layout_constraintBottom_toBottomOf="parent"
+   app:layout_constraintEnd_toEndOf="parent"
+   app:layout_constraintStart_toStartOf="parent"
+   app:layout_constraintTop_toTopOf="parent" />
+
+ <Button
+   android:id="@+id/button"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:background="#4CAF50"
+   android:paddingStart="10dp"
+   android:paddingEnd="10dp"
+   android:text="@string/btn"
+   android:textColor="@android:color/background_light"
+   android:textSize="24sp"
+   app:layout_constraintBottom_toBottomOf="parent"
+   app:layout_constraintEnd_toEndOf="parent"
+   app:layout_constraintStart_toStartOf="parent"
+   app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+Now After That Add the Following Program in Main Activity File i.e Mainactivity.kt file:
+
+package com.example.sycspractical2ia
+import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.sycspractical2a.R
+  class MainActivity : AppCompatActivity() {
+   override fun onCreate(savedInstanceState: Bundle?) {
+   super.onCreate(savedInstanceState)
+   setContentView(R.layout.activity_main)
+     val button = findViewById<Button>(R.id.button)
+     button?.setOnClickListener()
+     {
+       Toast.makeText(this@MainActivity, R.string.message, Toast.LENGTH_LONG).show() 
+    }
+  }
+ }
+
+
+Add The Following Program in strings.xml file:
+
+
+<resources>
+ <string name="app_name">SYCSpractical2a</string>
+   <string name="btn">Button</string>
+   <string name="message">Hello students ,This is a Button.</string>
+</resources>
+
+
+check AndroidManifest.xml file:
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools">
+ <application
+   android:allowBackup="true"
+   android:dataExtractionRules="@xml/data_extraction_rules"
+   android:fullBackupContent="@xml/backup_rules"
+   android:icon="@drawable/ic_launcher_background"
+   android:label="@string/app_name"
+   android:roundIcon="@drawable/ic_launcher_background"
+   android:supportsRtl="true"
+   android:theme="@style/Theme.SYCSPractical2ia"
+   tools:targetApi="31">
+   <activity
+     android:name=".MainActivity"
+     android:exported="true">
+     <intent-filter>
+       <action android:name="android.intent.action.MAIN" />
+       <category android:name="android.intent.category.LAUNCHER" />
+     </intent-filter>
+   </activity>
+ </application>
+</manifest>
