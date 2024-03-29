@@ -1,0 +1,46 @@
+Write a program using Kotlin to implement control structure and statement …
+1) If-else 
+
+fum main(){
+    val number = -10
+    if (number > 0) {
+        print("Positive number")
+    }else {
+        print("Negative number")
+    }
+}
+
+
+2) If-elseif ladder
+
+fun main(args: Array<String>) {
+    val number = 0
+    val result = if (number > 0)
+    "positive number"
+    else if (number < 0)
+    "negative number"
+    else
+    "zero"
+    println("number is $result")
+}
+
+3) When
+
+fun main(args: Array<String>) {
+ val day = 4
+ val result = when (day) {
+ 1 -> "Monday"
+ 2 -> "Tuesday"
+ 3 -> "Wednesday"
+ 4 -> "Thursday"
+ 5 -> "Friday"
+ 6 -> "Saturday"
+ 7 -> "Sunday"
+ else -> "Invalid day."
+ }
+ println(result)
+}
+
+
+
+
