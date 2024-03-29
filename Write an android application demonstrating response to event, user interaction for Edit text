@@ -1,0 +1,94 @@
+<!--Activity_main-->
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:orientation="vertical"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   tools:context=".MainActivity">
+ 
+ <EditText
+   android:id="@+id/editText"
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   android:layout_margin="16dp"
+   android:hint="Input"
+   android:inputType="text"/>
+ <Button
+   android:id="@+id/showInput"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:layout_gravity="center_horizontal"
+   android:text="show"
+   android:backgroundTint="@color/colorPrimary"
+   android:textColor="@android:color/white"
+   />
+</LinearLayout>
+
+
+
+//mainactivity.kt
+package com.example.sycspractical2ib
+import android.annotation.SuppressLint
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import com.example.sycspractical2aii.R
+class MainActivity : AppCompatActivity() {
+   @SuppressLint("MissingInflatedId")
+   override fun onCreate(savedInstanceState: Bundle?) {
+     super.onCreate(savedInstanceState)
+     setContentView(R.layout.activity_main)
+
+     val showButton = findViewById<Button>(R.id.showInput)
+     val editText = findViewById<EditText>(R.id.editText)
+    showButton.setOnClickListener {
+       val text = editText.text
+      Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+     }
+   }
+  }
+
+
+
+mainmanifestfile:
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+ xmlns:tools="http://schemas.android.com/tools">
+ <application
+   android:allowBackup="true"
+   android:dataExtractionRules="@xml/data_extraction_rules"
+   android:fullBackupContent="@xml/backup_rules"
+   android:icon="@drawable/ic_launcher_background"
+   android:label="@string/app_name"
+   android:roundIcon="@drawable/ic_launcher_background"
+   android:supportsRtl="true"
+   android:theme="@style/Theme.SYCSPractical2ib"
+   tools:targetApi="31">
+ <activity
+   android:name=".MainActivity"
+   android:exported="true">
+   <intent-filter>
+     <action android:name="android.intent.action.MAIN" />
+     <category android:name="android.intent.category.LAUNCHER" />
+   </intent-filter>
+  </activity>
+ </application>
+</manifest>
+
+
+
+Possible error and its solution
+You need to define the color resources in res/values/colors.xml to avoid the error.
+Example :
+ for @color/colorPrimary write the following code in res/values/colors.xml <color
+name="colorPrimary">#3F51B5</color>
+ for @color/colorPrimaryDark write the following code in res/values/colors.xml <color
+name="colorPrimaryDark">#303F9F</color>
+ for @color/colorAccent write the following code in res/values/colors.xml <color
+name="colorAccent">#FF4081</color>
